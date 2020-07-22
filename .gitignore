@@ -57,3 +57,6 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+app-release.aab
+output.json
+NamGungGeonKey.jks
