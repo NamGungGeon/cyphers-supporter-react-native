@@ -47,6 +47,9 @@ const App: () => React$Node = () => {
 
     return () => backHandler.remove();
   }, [goBackable]);
+  useEffect(() => {
+    if (webview) webview.clearCache();
+  }, [webview]);
   return (
     <>
       <StatusBar backgroundColor={'#212229'} style={styles.appbar} />
@@ -56,6 +59,7 @@ const App: () => React$Node = () => {
           renderLoading={() => <Splash />}
           mixedContentMode={'compatibility'}
           originWhitelist={['https://*', 'http://*']}
+          overScrollMode={'never'}
           injectedJavaScript={`
             (function() {
               function wrap(fn) {
@@ -93,11 +97,11 @@ const App: () => React$Node = () => {
             console.log('nav updated', nav);
             // detected external link
             if (!url.includes(BASE_URL)) {
-              webview.goBack();
               //open url with default browser
               Linking.openURL(url).catch((err) =>
                 console.error("Couldn't load page", err),
               );
+              webview.goBack();
             } else {
               setGoBackable(canGoBack);
             }
