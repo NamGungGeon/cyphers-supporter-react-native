@@ -48,7 +48,7 @@ const App: () => React$Node = () => {
     return () => backHandler.remove();
   }, [goBackable]);
   useEffect(() => {
-    if (webview) webview.clearCache();
+    if (webview && webview.clearCache) webview.clearCache();
   }, [webview]);
   return (
     <>
