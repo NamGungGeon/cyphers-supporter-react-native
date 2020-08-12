@@ -44,7 +44,7 @@
 		00E356EE1AD99517003FC87E /* cpspwebviewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cpspwebviewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* cpspwebviewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cpspwebviewTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* 사이퍼즈서포터Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "사이퍼즈서포터Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* CPSP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CPSP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = cpspwebview/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = cpspwebview/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = cpspwebview/Images.xcassets; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* 사이퍼즈서포터Lite.app */,
+				13B07F961A680F5B00A75B9A /* CPSP.app */,
 				00E356EE1AD99517003FC87E /* cpspwebviewTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* cpspwebview-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* cpspwebview-tvOSTests.xctest */,
@@ -238,7 +238,7 @@
 			);
 			name = cpspwebview;
 			productName = cpspwebview;
-			productReference = 13B07F961A680F5B00A75B9A /* 사이퍼즈서포터Lite.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* CPSP.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D02E47A1E0B4A5D006451C7 /* cpspwebview-tvOS */ = {
@@ -666,9 +666,10 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.cpspwebview;
-				PRODUCT_NAME = "사이퍼즈서포터Lite";
+				PRODUCT_NAME = CPSP;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -689,8 +690,9 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.cpspwebview;
-				PRODUCT_NAME = "사이퍼즈서포터Lite";
+				PRODUCT_NAME = CPSP;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
