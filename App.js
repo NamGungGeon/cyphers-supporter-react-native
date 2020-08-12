@@ -13,7 +13,6 @@ import {
   BackHandler,
   Alert,
   Linking,
-  View,
 } from 'react-native';
 import Splash from './component/Splash/Splash';
 import {WebView} from 'react-native-webview';
@@ -80,7 +79,7 @@ const App: () => React$Node = () => {
           onMessage={(event) => {
             const url = event.nativeEvent.data;
             if (url.includes(BASE_URL)) setGoBackable(url !== BASE_URL);
-            console.log(event.nativeEvent.data);
+            console.log('onMessage', event.nativeEvent.data);
           }}
           ref={(ref) => setWebview(ref)}
           onNavigationStateChange={(nav) => {
@@ -93,17 +92,16 @@ const App: () => React$Node = () => {
             //   canGoBack?: boolean;
             //   canGoForward?: boolean;
             // }
-            const {url, canGoBack} = nav;
+            const {url} = nav;
             console.log('nav updated', nav);
             // detected external link
             if (!url.includes(BASE_URL)) {
+              console.log('EXTERNAL LINK IS DETECTED');
               //open url with default browser
               Linking.openURL(url).catch((err) =>
                 console.error("Couldn't load page", err),
               );
               webview.goBack();
-            } else {
-              setGoBackable(canGoBack);
             }
           }}
           allowsBackForwardNavigationGestures={true}
