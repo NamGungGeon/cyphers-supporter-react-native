@@ -56,8 +56,10 @@ const App: () => React$Node = () => {
       <StatusBar backgroundColor={'#212229'} style={styles.appbar} />
       <SafeAreaView style={styles.safearea}>
         <WebView
+          pullToRefreshEnabled={true}
           startInLoadingState={true}
-          renderLoading={() => <Splash />}
+          allowsBackForwardNavigationGestures={true}
+          source={{uri: BASE_URL}}
           mixedContentMode={'compatibility'}
           originWhitelist={['https://*', 'http://*']}
           overScrollMode={'never'}
@@ -80,7 +82,7 @@ const App: () => React$Node = () => {
           `}
           onMessage={(event) => {
             const url = event.nativeEvent.data;
-            if (url.includes(BASE_URL)) setGoBackable(url !== BASE_URL);
+            setGoBackable(url !== BASE_URL);
             console.log('onMessage', event.nativeEvent.data);
           }}
           ref={(ref) => setWebview(ref)}
@@ -96,18 +98,7 @@ const App: () => React$Node = () => {
             // }
             const {url} = nav;
             console.log('nav updated', nav);
-            // detected external link
-            if (!url.includes(BASE_URL)) {
-              console.log('EXTERNAL LINK IS DETECTED');
-              //open url with default browser
-              Linking.openURL(url).catch((err) =>
-                console.error("Couldn't load page", err),
-              );
-              webview.goBack();
-            }
           }}
-          allowsBackForwardNavigationGestures={true}
-          source={{uri: BASE_URL}}
         />
         {webview && (
           <View style={styles.bottomMenu}>
