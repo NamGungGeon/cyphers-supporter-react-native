@@ -7,6 +7,8 @@
 
 import React, {useEffect, useState} from 'react';
 import {
+  View,
+  Text,
   SafeAreaView,
   StyleSheet,
   StatusBar,
@@ -14,7 +16,7 @@ import {
   Alert,
   Linking,
 } from 'react-native';
-import Splash from './component/Splash/Splash';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {WebView} from 'react-native-webview';
 
 const App: () => React$Node = () => {
@@ -107,6 +109,29 @@ const App: () => React$Node = () => {
           allowsBackForwardNavigationGestures={true}
           source={{uri: BASE_URL}}
         />
+        {webview && (
+          <View style={styles.bottomMenu}>
+            <Text style={styles.bottomMenuButton} onPress={webview.goBack}>
+              <Icon name="ios-arrow-back" size={30} color="#ffffff" />
+            </Text>
+            <Text style={styles.bottomMenuButton} onPress={webview.goForward}>
+              <Icon name="arrow-forward" size={30} color="#ffffff" />
+            </Text>
+            <Text style={styles.bottomMenuButton} onPress={webview.reload}>
+              <Icon name="refresh" size={30} color="#ffffff" />
+            </Text>
+            <Text
+              style={styles.bottomMenuButton}
+              onPress={() => {
+                webview.injectJavaScript(`
+                  window.location.pathname= '/';
+                  true;
+                `);
+              }}>
+              <Icon name="home" size={30} color="#ffffff" />
+            </Text>
+          </View>
+        )}
       </SafeAreaView>
     </>
   );
@@ -119,6 +144,13 @@ const styles = StyleSheet.create({
   safearea: {
     flex: 1,
     backgroundColor: '#212229',
+  },
+  bottomMenu: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  bottomMenuButton: {
+    padding: 16,
   },
 });
 
